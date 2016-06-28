@@ -2,7 +2,7 @@
 
 Medieval is an up and coming mod for minetest. 
 
-## Requires ##  
+## Requires 
 * Darkage
 
 This mod is not ready and is only for testing.
