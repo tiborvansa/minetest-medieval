@@ -11,6 +11,20 @@ local function register_plaster(name, description, plasterTexture)
 		sounds = default.node_sound_stone_defaults(),
 	})
 
+	
+end
+
+local function register_plaster_corner (name, description, plasterTexture)
+		minetest.register_node("medieval:" ..name.. "corner_plaster", {
+		description = description .. " With Plaster",
+		tiles = { plasterTexture .. "^medieval_plaster_D.png^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_B.png^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_C.png", "medieval_plaster.png", plasterTexture .. "^medieval_plaster_A.png", "medieval_plaster.png"},
+		is_ground_content = true,
+  		paramtype2 = "facedir",
+		groups = {cracky=3},groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
+		sounds = default.node_sound_stone_defaults(),
+	})
+
+
 	-- todo register craft reziep for round <name> box here
 end
 
@@ -45,5 +59,6 @@ textures = {
 
 for i,texture in ipairs(textures) do
 	register_plaster(texture.name, texture.description, texture.tiles)
+	register_plaster_corner(texture.name, texture.description, texture.tiles)
 	-- register whatever here 
 end
