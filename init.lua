@@ -7,8 +7,7 @@ dofile(minetest.get_modpath("medieval").."/mod_files/coloured_glass.lua")
 dofile(minetest.get_modpath("medieval").."/mod_files/bars.lua") 
 dofile(minetest.get_modpath("medieval").."/mod_files/medieval_tools.lua")
 dofile(minetest.get_modpath("medieval").."/mod_files/plaster_node.lua")
---[[dofile(minetest.get_modpath("medieval").."/mod_files/function.lua")
-]]--
+
  dofile(minetest.get_modpath("medieval").."/mod_files/nodes.lua")
 
 
