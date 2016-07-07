@@ -32,7 +32,7 @@ textures = {
 	-- RGB Prime Colours -- 
 	{name="wood", tiles="default_wood.png", description="Wood"},
 	{name="aspenWood", tiles="default_aspen_wood.png", description="Aspen Wood"},
-	{name="acaciaWood", tiles="default_acacia_wood.png", description="Acaia Wood"},
+	{name="acaciaWood", tiles="default_acacia_wood.png", description="Acacia Wood"},
 	{name="jungleWood", tiles="default_junglewood.png", description="Jungle Wood"},
 	{name="pineWood", tiles="default_pine_wood.png", description="Pine_Wood"},
 	
