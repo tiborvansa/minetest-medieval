@@ -37,6 +37,22 @@ minetest.register_tool("medieval:sickle_steel", {
 	},
 })
 
+minetest.register_tool("medieval:fish", {
+	description = "<0{{{{{><",
+	inventory_image = "medieval_fish.png",
+	tool_capabilities = {
+		full_punch_interval = 0.9,
+		max_drop_level=3,
+		groupcaps={
+			cracky = {times={[1]=2.0, [2]=1.0, [3]=0.50}, uses=30, maxlevel=3},
+			crumbly = {times={[1]=1.10, [2]=0.50, [3]=0.30}, uses=30, maxlevel=3},
+			choppy={times={[1]=2.10, [2]=0.90, [3]=0.50}, uses=30, maxlevel=2},
+			fleshy = {times={[2]=0.6, [3]=0.5}, uses=80, maxlevel=1}
+		},
+		damage_groups = {fleshy=5},
+	},
+})
+
 minetest.register_craft({
 	output = 'medieval:sickle_wood',
 	recipe = {
