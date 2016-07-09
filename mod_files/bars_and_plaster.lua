@@ -147,6 +147,7 @@ end
 textures = {
  -- RGB Prime Colours --
 	{name="aspenWood", tiles="default_aspen_wood.png", description="Aspen Wood", craft="default:aspen_wood", overlap="falsetrue"},
+	{name="acaiaWood", tiles="default_acacia_wood.png", description="Acacia Wood", craft="default:acacia_wood", overlap="false"},
 	{name="jungleWood", tiles="default_junglewood.png", description="Jungle Wood", craft="default:junglewood", overlap="false"},
 	{name="pineWood", tiles="default_pine_wood.png", description="Pine_Wood", craft="default:pine_wood", overlap="false"},
 	{name="wood", tiles="default_wood.png", description="Wood", craft="default:wood", overlap="true"},
