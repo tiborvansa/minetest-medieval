@@ -160,7 +160,7 @@ textures = {
 	{name="desertCobble", tiles="default_desert_cobble.png", description="Desert Cobble", craft="default:desert_cobble", overlap="false"},
 
 
-	{name="brick", tiles="default_brick.png", description="Brick", craft="default:brick"},
+	{name="brick", tiles="default_brick.png", description="Brick", craft="default:brick", overlap="false"},
 	{name="desertBrick", tiles="default_desert_stone_brick.png", description="Desert Brick", craft="default:desert_stone_brick", overlap="false"},
 	{name="sandBrick", tiles="default_sandstone_brick.png", description="Sandstone Brick", craft="default:sandstone_brick", overlap="false"},
 	{name="stoneBrick", tiles="default_stone_brick.png", description="Stone Brick,", craft="default:stone_brick" },
