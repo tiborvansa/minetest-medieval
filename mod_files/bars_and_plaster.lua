@@ -23,7 +23,7 @@ local function register_vertical_bar(name, description, barTexture, craft, overl
 end
 
 local function register_cross_bar(name, description, barTexture, craft, overlap)
-	
+
 	if overlap == "false" then
 
 	 minetest.register_node("medieval:" ..name.. "_cross_bar", {
@@ -98,9 +98,10 @@ end
 -- plaster blocks --
 -- ============== --
 
+
 local function register_plaster(name, description, plasterTexture, craft, overlap)
 
-	if overlap == "false" or overlap == "turefalse" then
+	if description ~= "Cobble" then
 		minetest.register_node("medieval:" ..name.. "_with_plaster", {
 			description = description .. " With Plaster",
 			tiles = { plasterTexture .. "^medieval_plaster_D.png", plasterTexture .. "^medieval_plaster_B.png", plasterTexture .. "^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_A.png", plasterTexture .. "", "medieval_plaster.png"},
@@ -121,7 +122,8 @@ local function register_plaster(name, description, plasterTexture, craft, overla
 end
 
 local function register_plaster_corner (name, description, plasterTexture, craft)
-		minetest.register_node("medieval:" ..name.. "_corner_plaster", {
+
+	minetest.register_node("medieval:" ..name.. "_corner_plaster", {
 		description = description .. " With Plaster",
 		tiles = { plasterTexture .. "^medieval_plaster_D.png^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_B.png^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_C.png", "medieval_plaster.png", plasterTexture .. "^medieval_plaster_A.png", "medieval_plaster.png"},
 		is_ground_content = true,
@@ -146,8 +148,7 @@ end
 
 textures = {
  -- RGB Prime Colours --
-	{name="aspenWood", tiles="default_aspen_wood.png", description="Aspen Wood", craft="default:aspen_wood", overlap="falsetrue"},
-	{name="acaiaWood", tiles="default_acacia_wood.png", description="Acacia Wood", craft="default:acacia_wood", overlap="false"},
+	{name="aspenWood", tiles="default_aspen_wood.png", description="Aspen Wood", craft="default:aspen_wood", overlap="false"},
 	{name="jungleWood", tiles="default_junglewood.png", description="Jungle Wood", craft="default:junglewood", overlap="false"},
 	{name="pineWood", tiles="default_pine_wood.png", description="Pine_Wood", craft="default:pine_wood", overlap="false"},
 	{name="wood", tiles="default_wood.png", description="Wood", craft="default:wood", overlap="true"},
