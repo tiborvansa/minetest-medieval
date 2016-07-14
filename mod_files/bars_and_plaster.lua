@@ -98,7 +98,6 @@ end
 -- plaster blocks --
 -- ============== --
 
-
 local function register_plaster(name, description, plasterTexture, craft, overlap)
 
 	if description ~= "Cobble" then
@@ -106,6 +105,7 @@ local function register_plaster(name, description, plasterTexture, craft, overla
 			description = description .. " With Plaster",
 			tiles = { plasterTexture .. "^medieval_plaster_D.png", plasterTexture .. "^medieval_plaster_B.png", plasterTexture .. "^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_A.png", plasterTexture .. "", "medieval_plaster.png"},
 			is_ground_content = true,
+			drop = name,
 			paramtype2 = "facedir",
 			groups = {cracky=3},groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
 			sounds = default.node_sound_stone_defaults(),
@@ -121,13 +121,14 @@ local function register_plaster(name, description, plasterTexture, craft, overla
 	end
 end
 
-local function register_plaster_corner (name, description, plasterTexture, craft)
+local function register_plaster_corner (name, description, plasterTexture, craft) 
 
 	minetest.register_node("medieval:" ..name.. "_corner_plaster", {
 		description = description .. " With Plaster",
 		tiles = { plasterTexture .. "^medieval_plaster_D.png^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_B.png^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_C.png", "medieval_plaster.png", plasterTexture .. "^medieval_plaster_A.png", "medieval_plaster.png"},
 		is_ground_content = true,
-  		paramtype2 = "facedir",
+		drop = name,
+  	paramtype2 = "facedir",
 		groups = {cracky=3},groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
 		sounds = default.node_sound_stone_defaults(),
 	})
@@ -150,7 +151,8 @@ textures = {
  -- RGB Prime Colours --
 	{name="aspenWood", tiles="default_aspen_wood.png", description="Aspen Wood", craft="default:aspen_wood", overlap="false"},
 	{name="jungleWood", tiles="default_junglewood.png", description="Jungle Wood", craft="default:junglewood", overlap="false"},
-	{name="pineWood", tiles="default_pine_wood.png", description="Pine_Wood", craft="default:pine_wood", overlap="false"},
+	{name="pineWood", tiles="default_pine_wood.png", description="Pine Wood", craft="default:pine_wood", overlap="false"},
+	{name="acaciaWood", tiles="default_acacia_wood.png", description="Acacia Wood", craft="default:acacia_wood", overlap="false"},
 	{name="wood", tiles="default_wood.png", description="Wood", craft="default:wood", overlap="true"},
 
 	--[[{name="stone", tiles="default_stone.png", description="Stone"},
@@ -171,7 +173,12 @@ textures = {
 	{name="orsCobble", tiles="darkage_ors_cobble.png", description="Old Red Sandstone Cobble", craft="darkage:ors_cobble", overlap="false"},
 	{name="slateCobble", tiles="darkage_slate_cobble.png", description="Slate Cobble,", craft="darkage:slate_cobble", overlap="false"},
 	{name="gneissCobble", tiles="darkage_gneiss_cobble.png", description="Gneiss Cobble", craft="darkage:gneiss_cobble", overlap="false"},
-	{name="basaltCobble", tiles="darkage_basalt_cobble.png", description="Basalt Cobble", craft="darkage:basalt_cobble", overlap="false"}
+	{name="basaltCobble", tiles="darkage_basalt_cobble.png", description="Basalt Cobble", craft="darkage:basalt_cobble", overlap="false"},
+
+	{name="tuffBricks", tiles="darkage_tuff_bricks.png", description="Tuff Bricks", craft="darkage:tuff_bricks", overlap="false"},
+	{name="rhyoliticTuffBricks", tiles="darkage_rhyolitic_tuff_bricks.png", description="Rhyolitic Tuff Bricks", craft="darkage:rhyolitic_tuff_bricks", overlap="false"},
+	{name="oldTuffBricks", tiles="darkage_old_tuff_bricks.png", description="Old Tuff Bricks", craft="darkage:old_tuff_bricks", overlap="false"}
+
 
 }
 
