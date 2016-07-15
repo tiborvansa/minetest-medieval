@@ -2,7 +2,7 @@
 
 	-- ===== --
 	-- nodes --
-	-- ===== -- 
+	-- ===== --
 
 minetest.register_alias("medieval_craft:glow_stone", "medieval:glowing_stone")
 
@@ -19,6 +19,15 @@ minetest.register_node("medieval:glowing_stone", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
+minetest.register_craft({
+	output = "medieval:glowing_stone 3",
+ recipe = {
+		{"default:cobble", "" , "default:cobble"},
+		{"", "default:meselamp" ,"" },
+		{"default:cobble", "", "default:cobble"},
+	}
+})
+
 minetest.register_alias("medieval_craft:glow_stone_lamp", "medieval:glowing_lamp")
 
 
@@ -33,6 +42,12 @@ minetest.register_node("medieval:glowing_lamp", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
+minetest.register_craft({
+	type = "shapeless",
+	output = "medieval:glowing_lamp 2",
+	recipe =  {"darkage:glass","medieval:glowing_stone"},
+})
+
 minetest.register_node("medieval:walkable_lamp", {
 	description = "Glowing Walkable Lamp ",
 	drawtype = "glasslike",
@@ -40,11 +55,24 @@ minetest.register_node("medieval:walkable_lamp", {
 	paramtype = "light",
 	climbable = true,
 	walkable = false,
-	light_source = 1,
+	light_source = 18,
 	sunlight_propagates = true,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
 })
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "medieval:walkable_lamp 2",
+	recipe =  {"darkage:glass","medieval:glowing_stone","default:ladder_wood"},
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "medieval:walkable_lamp 2",
+	recipe =  {"medieval:glowing_lamp","default:ladder_wood"},
+})
+
 
 -- ==== --
 -- rope --
@@ -66,6 +94,24 @@ minetest.register_node("medieval:rope", {
                 fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
 	},
 	groups = {bendy=2,dig_immediate=2,attached_node=1},
+})
+
+minetest.register_craft({
+	output = "medieval:rope 3",
+ recipe = {
+		{"farming:cotton", "" , ""},
+		{"", "farming:cotton" ,"" },
+		{"", "default:stick", "farming:cotton"},
+	}
+})
+
+minetest.register_craft({
+	output = "medieval:rope 3",
+ recipe = {
+		{"farming:cotton", "" , ""},
+		{"", "farming:cotton" ,"" },
+		{"", "", "farming:cotton"},
+	}
 })
 
 	-- ===== --
@@ -126,6 +172,5 @@ textures = {
 
 for i,texture in ipairs(textures) do
 	register_box(texture.name, texture.description, texture.tiles)
-	-- register whatever here
-end
 
+end

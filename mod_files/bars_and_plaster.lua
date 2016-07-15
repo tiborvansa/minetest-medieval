@@ -105,7 +105,7 @@ local function register_plaster(name, description, plasterTexture, craft, overla
 			description = description .. " With Plaster",
 			tiles = { plasterTexture .. "^medieval_plaster_D.png", plasterTexture .. "^medieval_plaster_B.png", plasterTexture .. "^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_A.png", plasterTexture .. "", "medieval_plaster.png"},
 			is_ground_content = true,
-			drop = name,
+			drop = craft,
 			paramtype2 = "facedir",
 			groups = {cracky=3},groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
 			sounds = default.node_sound_stone_defaults(),
@@ -121,13 +121,13 @@ local function register_plaster(name, description, plasterTexture, craft, overla
 	end
 end
 
-local function register_plaster_corner (name, description, plasterTexture, craft) 
+local function register_plaster_corner (name, description, plasterTexture, craft)
 
 	minetest.register_node("medieval:" ..name.. "_corner_plaster", {
 		description = description .. " With Plaster",
 		tiles = { plasterTexture .. "^medieval_plaster_D.png^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_B.png^medieval_plaster_C.png", plasterTexture .. "^medieval_plaster_C.png", "medieval_plaster.png", plasterTexture .. "^medieval_plaster_A.png", "medieval_plaster.png"},
 		is_ground_content = true,
-		drop = name,
+		drop = craft,
   	paramtype2 = "facedir",
 		groups = {cracky=3},groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
 		sounds = default.node_sound_stone_defaults(),
@@ -165,8 +165,8 @@ textures = {
 
 
 	{name="brick", tiles="default_brick.png", description="Brick", craft="default:brick", overlap="false"},
-	{name="desertBrick", tiles="default_desert_stone_brick.png", description="Desert Brick", craft="default:desert_stone_brick", overlap="false"},
-	{name="sandBrick", tiles="default_sandstone_brick.png", description="Sandstone Brick", craft="default:sandstone_brick", overlap="false"},
+	{name="desertBrick", tiles="default_desert_stone_brick.png", description="Desert Brick", craft="default:desert_stonebrick", overlap="false"},
+	{name="sandBrick", tiles="default_sandstone_brick.png", description="Sandstone Brick", craft="default:sandstonebrick", overlap="false"},
 	{name="stoneBrick", tiles="default_stone_brick.png", description="Stone Brick,", craft="default:stone_brick" },
 
 	{name="DSBrick", tiles="darkage_stone_brick.png", description="Darkage Stone Brick,", craft="darkage:stone_brick", overlap="false"},

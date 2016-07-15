@@ -38,7 +38,7 @@ minetest.register_tool("medieval:sickle_steel", {
 })
 
 minetest.register_tool("medieval:fish", {
-	description = "<0{{{{{><",
+	description = "<0{{{{{><(",
 	inventory_image = "medieval_fish.png",
 	tool_capabilities = {
 		full_punch_interval = 0.9,
