@@ -16,6 +16,24 @@ local facedir = {
 	[0] = {x=0, y=0, z=1}, {x=1, y=0, z=0}, {x=0, y=0, z=-1}, {x=-1, y=0, z=0}
 }
 
+-- Works good for the most items, but not for all
+local function get_drawtype(itemstring)
+	local def = minetest.registered_items[itemstring]
+	local drawtype = def.drawtype
+	local wield_image = def.wield_image
+	--minetest.debug(string.format("Item: %s dt: %s, wield: %s", itemstring, dump(drawtype),dump(wield_image)))
+	if wield_image ~= "" then
+		return "twosided"
+	elseif drawtype == "normal" or 
+		   drawtype == "mesh" or 
+		   drawtype == "nodebox" then
+		return "centered"
+	else 
+		return "twosided"
+	end
+end
+
+local PI = math.pi
 local function update_item(pos, node)
 	remove_item(pos, node)
 	local meta = minetest.get_meta(pos)
@@ -24,12 +42,30 @@ local function update_item(pos, node)
 	local posad = facedir[node.param2]
 	if not posad or itemstring == "" then return end
 
-	pos = vector.add(pos, vector.multiply(posad, 6.5/16))
+	local yaw = PI*2 - node.param2 * PI/2
+	if get_drawtype(itemstring) == "centered" then
+		local pos = pos
+		local obj = minetest.add_entity(pos, "medieval:sign_item")
+		obj:setyaw(yaw)
+		obj:get_luaentity():init(itemstring)
+	elseif get_drawtype(itemstring)=="twosided" then
+		-- Front
+		local pos1 = vector.add(pos, vector.multiply(posad, -1/16) )
+		local obj1 = minetest.add_entity(pos1, "medieval:sign_item")
+		obj1:setyaw(yaw)
+		obj1:get_luaentity():init(itemstring)
+		
+		-- Back
+		local pos2 = vector.add(pos, vector.multiply(posad, 1/16) )
+		local obj2 = minetest.add_entity(pos2, "medieval:sign_item")
+		obj2:setyaw(yaw+PI) --rotate this about 180 Degrees
+		obj2:get_luaentity():init(itemstring)
+	else
+		minetest.log("error", "Error: Invalid drawtype of "..itemstring)
+	end
+	pos = vector.add(pos, vector.multiply(posad, -1/16) )
 
-	local obj = minetest.add_entity(pos, "medieval:sign_item")
-	local yaw = math.pi*2 - node.param2 * math.pi/2
-	obj:setyaw(yaw)
-	obj:get_luaentity():init(itemstring)
+
 end
 
 local formspec = [[
@@ -91,12 +127,19 @@ minetest.register_node("medieval:sign", {
 	paramtype2 = "facedir",
 	inventory_image = "default_sign_wood.png",
 	node_box = {
-		 type = "fixed",
-		 fixed = {-0.4375, -0.3125, 0.4375, 0.4375, 0.3125, 0.5},
+		type = "fixed",
+		fixed = {
+			{-0.4375, -0.375, -0.0625, 0.4375, 0.375, 0.0625}, -- NodeBox4
+			{-0.375, -0.4375, -0.0625, 0.375, -0.375, 0.0625}, -- NodeBox5
+			{-0.3125, 0.375, 0, -0.1875, 0.5, 0}, -- NodeBox6
+			{0.1875, 0.375, 0, 0.3125, 0.5, 0}, -- NodeBox7
+			{0.25, 0.375, -0.0625, 0.25, 0.5, 0.0625}, -- NodeBox8
+			{-0.25, 0.375, -0.0625, -0.25, 0.5, 0.0625}, -- NodeBox9
+		}
 	},
-	tiles = {"default_sign_wall_wood.png"},
-	inventory_image = "default_sign_wood.png",
-	wield_image = "default_sign_wood.png",
+	tiles = {"medieval_sign.png"},
+	inventory_image = "medieval_sign.png",
+	wield_image = "medieval_sign.png",
 	after_place_node = itemsign.after_place,
 	on_construct = itemsign.construct,
 	on_metadata_inventory_put = itemsign.inventory_modified,
