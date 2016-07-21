@@ -24,11 +24,11 @@ local function get_drawtype(itemstring)
 	--minetest.debug(string.format("Item: %s dt: %s, wield: %s", itemstring, dump(drawtype),dump(wield_image)))
 	if wield_image ~= "" or def.inventory_image ~= "" then
 		return "twosided"
-	elseif drawtype == "normal" or 
-		   drawtype == "mesh" or 
+	elseif drawtype == "normal" or
+		   drawtype == "mesh" or
 		   drawtype == "nodebox" then
 		return "centered"
-	else 
+	else
 		return "twosided"
 	end
 end
@@ -54,7 +54,7 @@ local function update_item(pos, node)
 		local obj1 = minetest.add_entity(pos1, "medieval:sign_item")
 		obj1:setyaw(yaw)
 		obj1:get_luaentity():init(itemstring)
-		
+
 		-- Back
 		local pos2 = vector.add(pos, vector.multiply(posad, 1/16) )
 		local obj2 = minetest.add_entity(pos2, "medieval:sign_item")
@@ -131,9 +131,9 @@ minetest.register_node("medieval:sign", {
 	sunlight_propagates = true,
 	paramtype = "light",
 	paramtype2 = "facedir",
-	tiles = {"medieval_sign.png"},
-	inventory_image = "medieval_sign_inventory.png",
-	wield_image = "medieval_sign_inventory.png",
+	tiles = {"medieval_sign_chain.png^medieval_sign.png"},
+	inventory_image = "medieval_sign.png",
+	wield_image = "medieval_sign.png",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -183,4 +183,90 @@ minetest.register_entity("medieval:sign_item", {
 	get_staticdata = function(self)
 		return minetest.serialize(self.data)
 	end
+})
+
+--=============--
+-- extra nodes --
+--=============--
+
+minetest.register_node("medieval:sign_support", {
+	tiles = {
+		"medieval_sign_support.png",
+		"medieval_sign_support.png",
+		"medieval_sign_support.png",
+		"medieval_sign_support_B.png",
+		"medieval_sign_support.png",
+		"medieval_sign_support_B.png"
+	},
+	drawtype = "nodebox",
+	sunlight_propagates = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = {choppy=3, oddly_breakable_by_hand=2, flammable=3},
+	sounds = default.node_sound_wood_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.0625, 0.5, -0.375, 0.0625}, -- NodeBox1
+			{-0.5, -0.5, 0, 0.5, -0.0625, 0}, -- NodeBox2
+		},
+	},
+
+})
+
+minetest.register_node("medieval:sign_chain", {
+	tiles = {
+		"medieval_sign_chain.png",
+	},
+	drawtype = "nodebox",
+	sunlight_propagates = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = {choppy=3, oddly_breakable_by_hand=2, flammable=3},
+	sounds = default.node_sound_wood_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, 0, -0.25, 0.625, 0}, -- NodeBox1
+			{0.25, -0.5, 0, 0.375, 0.625, 0}, -- NodeBox2
+			{-0.3125, -0.5, -0.0625, -0.3125, 0.625, 0.0625}, -- NodeBox3
+			{0.3125, -0.5, -0.0625, 0.3125, 0.625, 0.0625}, -- NodeBox4
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
+		},
+	},
+
+})
+
+--========--
+-- crafts --
+--=========--
+
+minetest.register_craft({
+	output = "medieval:sign 3",
+ recipe = {
+		{"darkage:chain", "" , "darkage:chain"},
+		{"default:wood", "default:wood" ,"default:wood" },
+		{"default:wood", "default:wood", "default:wood"},
+	}
+})
+
+minetest.register_craft({
+	output = "medieval:sign_support 2",
+ recipe = {
+		{"darkage:chain", "" , ""},
+		{"", "darkage:chain" , ""},
+		{"default:stick", "default:stick" , "default:stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "medieval:sign_chain 2",
+ recipe = {
+		{"darkage:chain", "" , "darkage:chain"},
+	}
 })
