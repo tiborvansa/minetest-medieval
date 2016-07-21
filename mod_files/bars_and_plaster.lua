@@ -170,7 +170,7 @@ textures = {
 	{name="stoneBrick", tiles="default_stone_brick.png", description="Stone Brick,", craft="default:stone_brick" },
 
 	{name="DSBrick", tiles="darkage_stone_brick.png", description="Darkage Stone Brick,", craft="darkage:stone_brick", overlap="false"},
-	{name="orsCobble", tiles="darkage_ors_cobble.png", description="Old Red Sandstone Cobble", craft="darkage:ors_cobble", overlap="false"},
+	{name="orsBrick", tiles="darkage_ors_brick.png", description="Old Red Sandstone Brick", craft="darkage:ors_brick", overlap="false"},
 	{name="slateCobble", tiles="darkage_slate_cobble.png", description="Slate Cobble,", craft="darkage:slate_cobble", overlap="false"},
 	{name="gneissCobble", tiles="darkage_gneiss_cobble.png", description="Gneiss Cobble", craft="darkage:gneiss_cobble", overlap="false"},
 	{name="basaltCobble", tiles="darkage_basalt_cobble.png", description="Basalt Cobble", craft="darkage:basalt_cobble", overlap="false"},
