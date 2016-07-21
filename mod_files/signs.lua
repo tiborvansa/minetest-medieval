@@ -22,7 +22,7 @@ local function get_drawtype(itemstring)
 	local drawtype = def.drawtype
 	local wield_image = def.wield_image
 	--minetest.debug(string.format("Item: %s dt: %s, wield: %s", itemstring, dump(drawtype),dump(wield_image)))
-	if wield_image ~= "" then
+	if wield_image ~= "" or def.inventory_image ~= "" then
 		return "twosided"
 	elseif drawtype == "normal" or 
 		   drawtype == "mesh" or 
@@ -89,6 +89,12 @@ function itemsign.construct(pos)
 	inv:set_size("item", 1)
 end
 
+function itemsign.can_dig(pos, player)
+	local meta = minetest.get_meta(pos);
+	local inv = meta:get_inventory()
+	return inv:is_empty("item")
+end
+
 function itemsign.after_place(pos, placer, itemstack)
 	local meta = minetest.get_meta(pos)
 	local name = placer:get_player_name()
@@ -118,34 +124,34 @@ end
 
 minetest.register_node("medieval:sign", {
 	drawtype = "nodebox",
-	description = " Trading sign",
+	description = "Trading sign",
 	groups = {choppy=3, oddly_breakable_by_hand=2, flammable=3},
 	sounds = default.node_sound_wood_defaults(),
 	--on_rotate = screwdriver.disallow,
 	sunlight_propagates = true,
 	paramtype = "light",
 	paramtype2 = "facedir",
-	inventory_image = "default_sign_wood.png",
+	tiles = {"medieval_sign.png"},
+	inventory_image = "medieval_sign_inventory.png",
+	wield_image = "medieval_sign_inventory.png",
 	node_box = {
 		type = "fixed",
 		fixed = {
 			{-0.4375, -0.375, -0.0625, 0.4375, 0.375, 0.0625}, -- NodeBox4
 			{-0.375, -0.4375, -0.0625, 0.375, -0.375, 0.0625}, -- NodeBox5
-			{-0.3125, 0.375, 0, -0.1875, 0.5, 0}, -- NodeBox6
-			{0.1875, 0.375, 0, 0.3125, 0.5, 0}, -- NodeBox7
-			{0.25, 0.375, -0.0625, 0.25, 0.5, 0.0625}, -- NodeBox8
-			{-0.25, 0.375, -0.0625, -0.25, 0.5, 0.0625}, -- NodeBox9
+			{-0.3125, 0.375, 0, -0.1875, 0.5625, 0}, -- NodeBox6
+			{0.1875, 0.375, 0, 0.3125, 0.5625, 0}, -- NodeBox7
+			{0.25, 0.375, -0.0625, 0.25, 0.5625, 0.0625}, -- NodeBox8
+			{-0.25, 0.375, -0.0625, -0.25, 0.5625, 0.0625}, -- NodeBox9
 		}
 	},
-	tiles = {"medieval_sign.png"},
-	inventory_image = "medieval_sign.png",
-	wield_image = "medieval_sign.png",
 	after_place_node = itemsign.after_place,
 	on_construct = itemsign.construct,
 	on_metadata_inventory_put = itemsign.inventory_modified,
 	on_metadata_inventory_take = itemsign.inventory_modified,
 	on_receive_fields = itemsign.on_receive_fields,
 	on_punch = update_item,
+	can_dig = itemsign.can_dig,
 	after_destruct = remove_item
 })
 
