@@ -19,14 +19,15 @@ local facedir = {
 -- Works good for the most items, but not for all
 local function get_drawtype(itemstring)
 	local def = minetest.registered_items[itemstring]
-	local drawtype = def.drawtype
-	local wield_image = def.wield_image
+
 	--minetest.debug(string.format("Item: %s dt: %s, wield: %s", itemstring, dump(drawtype),dump(wield_image)))
-	if wield_image ~= "" or def.inventory_image ~= "" then
+	if not def then
 		return "twosided"
-	elseif drawtype == "normal" or
-		   drawtype == "mesh" or
-		   drawtype == "nodebox" then
+	elseif def.wield_image ~= "" or def.inventory_image ~= "" then
+		return "twosided"
+	elseif def.drawtype == "normal" or
+		   def.drawtype == "mesh" or
+		   def.drawtype == "nodebox" then
 		return "centered"
 	else
 		return "twosided"
