@@ -191,6 +191,7 @@ minetest.register_entity("medieval:sign_item", {
 --=============--
 
 minetest.register_node("medieval:sign_support", {
+	description = "Sign support",
 	tiles = {
 		"medieval_sign_support.png",
 		"medieval_sign_support.png",
@@ -216,6 +217,7 @@ minetest.register_node("medieval:sign_support", {
 })
 
 minetest.register_node("medieval:sign_chain", {
+	description = "Sign Chain",
 	tiles = {
 		"medieval_sign_chain.png",
 	},
