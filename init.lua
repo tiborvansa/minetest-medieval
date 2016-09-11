@@ -1,5 +1,4 @@
-GLASS_ALPHA = 60
-GLASS_VISC = 1
+
 
 local MODPATH = minetest.get_modpath("medieval")
 medieval = {}

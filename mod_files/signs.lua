@@ -200,6 +200,8 @@ minetest.register_node("medieval:sign_support", {
 		"medieval_sign_support.png",
 		"medieval_sign_support_B.png"
 	},
+	inventory_image = "medieval_sign_support.png",
+	wield_image = "medieval_sign_support.png",
 	drawtype = "nodebox",
 	sunlight_propagates = true,
 	paramtype = "light",
@@ -213,7 +215,6 @@ minetest.register_node("medieval:sign_support", {
 			{-0.5, -0.5, 0, 0.5, -0.0625, 0}, -- NodeBox2
 		},
 	},
-
 })
 
 minetest.register_node("medieval:sign_chain", {
@@ -221,6 +222,8 @@ minetest.register_node("medieval:sign_chain", {
 	tiles = {
 		"medieval_sign_chain.png",
 	},
+	inventory_image = "medieval_sign_chain.png",
+	wield_image = "medieval_sign_chain.png",
 	drawtype = "nodebox",
 	sunlight_propagates = true,
 	paramtype = "light",
@@ -242,7 +245,6 @@ minetest.register_node("medieval:sign_chain", {
 			{-0.375, -0.5, -0.0625, 0.375, 0.5, 0.0625},
 		},
 	},
-
 })
 
 --========--
@@ -251,25 +253,25 @@ minetest.register_node("medieval:sign_chain", {
 
 minetest.register_craft({
 	output = "medieval:sign 3",
- recipe = {
+ 	recipe = {
 		{"darkage:chain", "" , "darkage:chain"},
-		{"default:wood", "default:wood" ,"default:wood" },
-		{"default:wood", "default:wood", "default:wood"},
+		{"group:wood", "group:wood" ,"group:wood"},
+		{"group:wood", "group:wood", "group:wood"},
 	}
 })
 
 minetest.register_craft({
 	output = "medieval:sign_support 2",
- recipe = {
+	recipe = {
 		{"darkage:chain", "" , ""},
 		{"", "darkage:chain" , ""},
-		{"default:stick", "default:stick" , "default:stick"},
+		{"group:stick", "group:stick" , "group:stick"},
 	}
 })
 
 minetest.register_craft({
 	output = "medieval:sign_chain 2",
- recipe = {
+	recipe = {
 		{"darkage:chain", "" , "darkage:chain"},
 	}
 })
