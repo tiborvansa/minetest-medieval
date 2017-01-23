@@ -171,9 +171,9 @@ textures = {
 
 	{name="DSBrick", tiles="darkage_stone_brick.png", description="Darkage Stone Brick,", craft="darkage:stone_brick", overlap="false"},
 	{name="orsBrick", tiles="darkage_ors_brick.png", description="Old Red Sandstone Brick", craft="darkage:ors_brick", overlap="false"},
-	{name="slateCobble", tiles="darkage_slate_cobble.png", description="Slate Cobble,", craft="darkage:slate_cobble", overlap="false"},
-	{name="gneissCobble", tiles="darkage_gneiss_cobble.png", description="Gneiss Cobble", craft="darkage:gneiss_cobble", overlap="false"},
-	{name="basaltCobble", tiles="darkage_basalt_cobble.png", description="Basalt Cobble", craft="darkage:basalt_cobble", overlap="false"},
+	{name="slateCobble", tiles="darkage_slate_brick.png", description="Slate Brick", craft="darkage:slate_brick", overlap="false"},
+	{name="gneissCobble", tiles="darkage_gneiss_brick.png", description="Gneiss Brick", craft="darkage:gneiss_brick", overlap="false"},
+	{name="basaltCobble", tiles="darkage_basalt_brick.png", description="Basalt Brick", craft="darkage:basalt_brick", overlap="false"},
 
 	{name="tuffBricks", tiles="darkage_tuff_bricks.png", description="Tuff Bricks", craft="darkage:tuff_bricks", overlap="false"},
 	{name="rhyoliticTuffBricks", tiles="darkage_rhyolitic_tuff_bricks.png", description="Rhyolitic Tuff Bricks", craft="darkage:rhyolitic_tuff_bricks", overlap="false"},
