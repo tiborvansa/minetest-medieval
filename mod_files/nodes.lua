@@ -10,10 +10,9 @@ minetest.register_alias("medieval_craft:glow_stone", "medieval:glowing_stone")
 
 minetest.register_node("medieval:glowing_stone", {
 	description = "Glowing Stone",
-	drawtype = "glasslike",
 	tiles = {"medieval_glowing_stone.png"},
 	paramtype = "light",
-	light_source = 18,
+	light_source = 14,
 	sunlight_propagates = true,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
@@ -33,10 +32,9 @@ minetest.register_alias("medieval_craft:glow_stone_lamp", "medieval:glowing_lamp
 
 minetest.register_node("medieval:glowing_lamp", {
 	description = "Glowing Stone Lamp",
-	drawtype = "glasslike",
 	tiles = {"medieval_glowing_lamp.png"},
 	paramtype = "light",
-	light_source = 18,
+	light_source = 14,
 	sunlight_propagates = true,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
@@ -55,7 +53,7 @@ minetest.register_node("medieval:walkable_lamp", {
 	paramtype = "light",
 	climbable = true,
 	walkable = false,
-	light_source = 18,
+	light_source = 14,
 	sunlight_propagates = true,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
